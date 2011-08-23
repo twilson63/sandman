@@ -93,6 +93,7 @@
         input = this.$("input:not(:checked)");
         if(input.val() === this.get('value')) {
           input.prop('checked','checked');
+          this.$().buttonset( "refresh" );
         }
       }.observes('value')
       
