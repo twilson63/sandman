@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Your Page Title Here :)</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  
+  
+
+  <!-- Favicons
+  ================================================== -->
+  <link rel="shortcut icon" href="../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+
+
+
+  <!-- Primary Page Layout
+  ================================================== -->
+
+  <!-- Delete everything in this .container and get started on your own site! -->
+
+
+
+
+  <div class="container">
+    <div class="two-thirds columns">
+    <script type='text/html'>
+    {{#view App.MyView id="radio"}}
+      <input type="radio" name="radio" id="radio1" value="y" {{bindAttr checked="checked"}} /><label for="radio1">Yes</label>
+      <input type="radio" name="radio" id="radio2" value="n" {{bindAttr checked="checked"}} /><label for="radio2">No</label>
+    {{/view}}
+    </script>
+    </div>
+  </div>
+  <br />
+  <script type='text/html'>
+  {{#view App.MyView2}}
+    <input type='text' {{bindAttr value="value"}}
+  {{/view}}
+  </script>
+  <!-- JS
+  ================================================== -->
+  <script src="../lib/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script src="../lib/sproutcore-2.0.beta.3.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type='text/javascript'>
+    window.App = App = SC.Application.create();
+    App.myController = SC.Object.create({
+      user: 'Hello'
+    });
+    
+    App.MyView = SC.View.extend({
+      valueBinding: 'App.myController.user',
+      didInsertElement: function(key, value) {
+        this.$().buttonset();
+        this._super();
+      },
+      change: function(event) {
+        this._elementValueDidChange()
+        return false;
+      },
+      _elementValueDidChange: function() {
+        this.set('value', this.$('input:checked').val());
+      },
+
+      _updateElementValue: function() {
+        input = this.$("input:not(:checked)");
+        if(input.val() === this.get('value')) {
+          input.prop('checked','checked');
+        }
+      }.observes('value')
+      
+    });
+    
+    App.MyView2 = SC.View.extend({
+      valueBinding: 'App.myController.user',
+      change: function(event) {
+        this._elementValueDidChange()
+        //this.set('user', this.$().val());
+        //console.log(this.$('input').val());
+        return false;
+      },
+      _elementValueDidChange: function() {
+        this.set('value', this.$('input').val());
+      },
+
+      _updateElementValue: function() {
+        this.$('input').val(this.get('value'));
+      }
+      
+    });
+      
+  </script>
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
