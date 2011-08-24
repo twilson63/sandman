@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Your Page Title Here :)</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  
+
+  <!-- Favicons
+  ================================================== -->
+  <link rel="shortcut icon" href="../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+  <div class="container">
+    <div class="sixteen columns">
+      <h2>JQuery Button SproutCore Style</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="one-third column">
+      <script type='text/html'>
+      <h3>Buttons</h3>
+      {{view JQ.Button label="whats up"}}
+      <br />
+      <h3>Radio Buttons</h3>
+      {{#view JQ.ButtonSet valueBinding="App.myController.value"}}
+        <input type='radio' id='radio1' name="radio" value='y' {{bindAttr checked="checked"}}><label for="radio1">Hello</label>
+        <input type='radio' id='radio2' name="radio" value='n' {{bindAttr checked="checked"}}><label for="radio2">World</label>
+        <input type='radio' id='radio3' name="radio" value='z' {{bindAttr checked="checked"}}><label for="radio3">GoodBye</label>
+        <input type='radio' id='radio4' name="radio" value='a' {{bindAttr checked="checked"}}><label for="radio4">Moon</label>
+
+      {{/view}}
+      <br />
+      <h3>CheckBox Buttons</h3>
+      {{#view JQ.ButtonSet valueBinding="App.myController.ckvalue"}}
+        <input type='checkbox' id='checkbox1' name="radio" value='y' {{bindAttr checked="checked"}}><label for="checkbox1">Hello</label>
+        <input type='checkbox' id='checkbox2' name="radio" value='n' {{bindAttr checked="checked"}}><label for="checkbox2">World</label>
+        <input type='checkbox' id='checkbox3' name="radio" value='z' {{bindAttr checked="checked"}}><label for="checkbox3">GoodBye</label>
+        <input type='checkbox' id='checkbox4' name="radio" value='a' {{bindAttr checked="checked"}}><label for="checkbox4">Moon</label>
+
+      {{/view}}
+      </script>
+      </div>
+      <div class="one-third column">
+      <script type="text/html">
+      <h3>Buttons with Icons</h3>
+      {{view JQ.Button 
+        label="whats up" 
+        primary-icon="ui-icon-gear"
+        secondary-icon="ui-icon-triangle-1-s" }}
+      <br />
+      <h3>Split Buttons</h3>
+      {{#view JQ.ButtonSet}}
+        {{view JQ.Button label="Split"}}
+        {{view JQ.Button label="Button" primary-icon="ui-icon-gear"}}
+      {{/view}}
+      </script>
+    </div>
+  </div><!-- container -->
+  <!-- JS
+  ================================================== -->
+  <script src="../lib/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/sproutcore-2.0.beta.3.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="jq_widget.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jq_button.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jq_button_set.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="../lib/coffee-script.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script type='text/coffeescript'>
+    window.App = App = SC.Application.create()
+    App.myController = SC.Object.create
+      value: ['y']
+      ckvalue: []
+  </script>
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

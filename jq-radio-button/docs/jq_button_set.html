@@ -1,0 +1,65 @@
+<!DOCTYPE html>  <html> <head>   <title>jq_button_set.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               jq_button_set.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>JQ.ButtonSet</h1>
+
+<p>is a SproutCore View that 
+creates jquery ui radio buttons</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">JQ.ButtonSet = </span><span class="nx">SC</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">JQ</span><span class="p">.</span><span class="nx">Widget</span><span class="p">,</span> 
+  <span class="nv">uiType: </span><span class="s2">&quot;buttonset&quot;</span>
+  <span class="nv">uiOptions: </span><span class="p">[</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span> <span class="p">]</span>
+  <span class="nv">tagName: </span><span class="s2">&quot;div&quot;</span>
+  <span class="nv">change: </span><span class="nf">(event) -&gt;</span>
+    <span class="nx">@_elementValueDidChange</span><span class="p">()</span>
+    <span class="kc">false</span>
+      
+  <span class="nv">_elementValueDidChange: </span><span class="o">-&gt;</span>
+    <span class="nv">value = </span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="k">for</span> <span class="nx">input</span> <span class="k">in</span> <span class="nx">@$</span><span class="p">(</span><span class="s2">&quot;input:checked&quot;</span><span class="p">))</span>
+    <span class="nx">@set</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="nx">value</span>
+
+  <span class="nv">_updateElementValue: </span><span class="o">`</span><span class="nx">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input:checked&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&quot;checked&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">input = </span><span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[value=&quot;</span> <span class="o">+</span> <span class="nx">item</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">);</span>
+      <span class="nx">input</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&quot;checked&quot;</span><span class="p">,</span> <span class="s2">&quot;checked&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">().</span><span class="nx">buttonset</span><span class="p">(</span><span class="s2">&quot;refresh&quot;</span><span class="p">);</span>
+  <span class="p">}.</span><span class="nx">observes</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span> <span class="o">`</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Here is a sample handlebars template for radio buttons</p>
+
+<p>{{#view JQ.ButtonSet valueBinding="App.myController.value"}}</p>
+
+<pre><code>&lt;input type='radio' id='radio1' name="radio" value='y' {{bindAttr checked="checked"}}&gt;
+&lt;label for="radio1"&gt;Hello&lt;/label&gt;
+
+&lt;input type='radio' id='radio2' name="radio" value='n' {{bindAttr checked="checked"}}&gt;
+&lt;label for="radio2"&gt;World&lt;/label&gt;
+
+&lt;input type='radio' id='radio3' name="radio" value='z' {{bindAttr checked="checked"}}&gt;
+&lt;label for="radio3"&gt;GoodBye&lt;/label&gt;
+
+&lt;input type='radio' id='radio4' name="radio" value='a' {{bindAttr checked="checked"}}&gt;
+&lt;label for="radio4"&gt;Moon&lt;/label&gt;
+</code></pre>
+
+<p>{{/view}}</p>
+
+<p>jQuery Ui Button set requires that the labels use the for id to connect to the input
+type and inorder for the ButtonSet to properly work you have to bindAttr to the 
+checked attribute.</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Here is a sample handlebars template for checkbox buttons</p>
+
+<p>{{#view JQ.ButtonSet valueBinding="App.myController.ckvalue"}}</p>
+
+<pre><code>&lt;input type='checkbox' id='checkbox1' name="checkbox" value='y' {{bindAttr checked="checked"}}&gt;
+&lt;label for="checkbox1"&gt;Hello&lt;/label&gt;
+
+&lt;input type='checkbox' id='checkbox2' name="checkbox" value='n' {{bindAttr checked="checked"}}&gt;
+&lt;label for="checkbox2"&gt;World&lt;/label&gt;
+
+&lt;input type='checkbox' id='checkbox3' name="checkbox" value='z' {{bindAttr checked="checked"}}&gt;
+&lt;label for="checkbox3"&gt;GoodBye&lt;/label&gt;
+
+&lt;input type='checkbox' id='checkbox4' name="checkbox" value='a' {{bindAttr checked="checked"}}&gt;
+&lt;label for="checkbox4"&gt;Moon&lt;/label&gt;
+</code></pre>
+
+<p>{{/view}}</p>
+
+<p>jQuery Ui Button set requires that the labels use the for id to connect to the input
+type and inorder for the ButtonSet to properly work you have to bindAttr to the 
+checked attribute.</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
