@@ -45,21 +45,34 @@
   <!-- Delete everything in this .container and get started on your own site! -->
 
   <div class="container">
+    <div class="sixteen columns">
+      <h1>Project Sandman - SproutCore2 JQueryUI Views</h1>
+      <h2>Accordion Demo</h2>
+      <hr />
+    </div>
+    <div class="two-thirds columns">
+      <script type="text/html">
+      {{foobar "world"}}
+      </script>
+    </div>
   </div><!-- container -->
   <!-- JS
   ================================================== -->
   <script src="http://yandex.st/highlightjs/6.0/highlight.min.js"></script>
   <script src="../../lib/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/sproutcore-2.0.beta.3.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../lib/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_widget.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_button.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_button_set.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_slider.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../lib/jq_accordion.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/coffee-script.js" type="text/javascript" charset="utf-8"></script>
   <script type='text/coffeescript'>
-
+    Handlebars.registerHelper 'foobar', (property) -> 
+      new Handlebars.SafeString "<h3>Hello</h3><div>World</div><h3>Goodbye</h3><div>Moon</div>"
   </script>
-  <script> 
+  <script type='text/javascript'> 
     hljs.tabReplace = '  ';
     hljs.initHighlightingOnLoad();
   </script>

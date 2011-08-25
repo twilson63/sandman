@@ -8,7 +8,7 @@
   <!-- Basic Page Needs
   ================================================== -->
   <meta charset="utf-8">
-  <title>Project Sandman Demos</title>
+  <title>SproutCore and JQueryUI Buttons</title>
   <meta name="description" content="">
   <meta name="author" content="">
   <!--[if lt IE 9]>
@@ -36,29 +36,64 @@
 
 </head>
 <body>
-
-
-
-  <!-- Primary Page Layout
-  ================================================== -->
-
-  <!-- Delete everything in this .container and get started on your own site! -->
-
   <div class="container">
+    <div class="sixteen columns">
+      <h1>Project Sandman - SproutCore2 JQueryUI Views</h1>
+      <h2>Buttons Demo</h2>
+      <hr />
+    </div>
+    <div class="two-thirds columns">
+      <h3>Standard jQuery UI Button</h3>
+      <h5>Source</h5>
+      <pre><code>{{view JQ.Button label="JQ.Button"}}</code></pre>
+      <h5>Demo</h5>
+      <script type='text/html'>
+      {{#view SC.AnchorView }}
+        Click Here...
+      {{/view}}
+      </script>
+      <h3>Primary Icon Button</h3>
+      <h5>Source</h5>
+      <pre><code>{{view JQ.Button label="JQ.Button w Icon" primary-icon="ui-icon-gear"}}</code></pre>
+      <h5>Demo</h5>
+      <script type="text/html">
+      {{view JQ.Button label="JQ.Button w Icon" primary-icon="ui-icon-gear"}}
+      </script>
+      <h3>Multiple Buttons</h3>
+      <h5>Source</h5>
+      <pre><code>
+      {{#each buttons}}  
+        {{view JQ.Button label="" primary-icon="ui-icon-gear"}}
+      {{/each}}
+      </code></pre>
+      <h5>Demo</h5>
+      <script type="text/html">
+      {{#view App.PeopleView}}
+        {{#each people}}
+          {{view JQ.Button 
+            labelBinding="name" 
+            target="App.hello"
+            action="click"}}
+        {{/each}}
+      {{/view}}
+      </script>
+      
+    </div>
   </div><!-- container -->
   <!-- JS
   ================================================== -->
   <script src="http://yandex.st/highlightjs/6.0/highlight.min.js"></script>
   <script src="../../lib/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/sproutcore-2.0.beta.3.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../lib/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_widget.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_button.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_button_set.js" type="text/javascript" charset="utf-8"></script>
   <script src="../../lib/jq_slider.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../../lib/coffee-script.js" type="text/javascript" charset="utf-8"></script>
-  <script type='text/coffeescript'>
+  <script src="../../lib/anchor.js" type="text/javascript" charset="utf-8"></script>
 
-  </script>
+  <script src="app.js" type="text/javascript" charset="utf-8"></script>
+
   <script> 
     hljs.tabReplace = '  ';
     hljs.initHighlightingOnLoad();

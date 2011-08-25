@@ -4,8 +4,6 @@ JQ.Widget = SC.Mixin.create
     @_super()
     options = @_gatherOptions()
     @_gatherEvents options
-    console.log(options);
-    console.log(@get("element"))
     ui = this.$()[@get("uiType")](options)
     #ui = jQuery.ui[@get("uiType")](options, @get("element"))
     @set "ui", ui
